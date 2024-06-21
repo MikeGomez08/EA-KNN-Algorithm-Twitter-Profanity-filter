@@ -1,0 +1,54 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+
+  "name": "Twitter Profanity Filter",
+  "short_name": "Twitter Profanity",
+  "author": "Gomez Mike Miguel",
+  "manifest_version": 2,
+  "version": "2.0",
+  "description": "Using Ensemble Approach KNN text classification and Categorization",
+  "icons": {
+    "16": "icons/logo.png",
+    "48": "icons/logo64.png",
+    "128": "icons/logo128.png"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+	"<all_urls>",
+	"webNavigation",
+	
+	"contextMenus",
+	"activeTab"
+  ],
+  "options_ui": {
+    "page": "anOption.html",
+    "chrome_style": true
+  },
+  "background": {
+    "scripts": ["anEventPage.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "icons/logo.png",
+      "38": "icons/logo64.png"
+    },
+    "default_title": "Adieu Profanity Filter"
+  },
+  "web_accessible_resources": [
+	"img/null.png",
+	"icons/logo.png", 
+  "icons/logo64.png",
+  "icons/logo128.png"
+  ],
+  "content_scripts": [
+    {
+      "matches":["<all_urls>"],
+      "js": ["aFilter.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ]
+}
+
