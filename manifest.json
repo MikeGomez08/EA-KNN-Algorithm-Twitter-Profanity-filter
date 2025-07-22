@@ -1,10 +1,8 @@
 {
-  "update_url": "https://clients2.google.com/service/update2/crx",
-
   "name": "Twitter Profanity Filter",
   "short_name": "Twitter Profanity",
   "author": "Gomez Mike Miguel",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "version": "2.0",
   "description": "Using Ensemble Approach KNN text classification and Categorization",
   "icons": {
@@ -15,21 +13,21 @@
   "permissions": [
     "tabs",
     "storage",
-	"<all_urls>",
-	"webNavigation",
-	
-	"contextMenus",
-	"activeTab"
+    "webNavigation",
+    "contextMenus",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
   ],
   "options_ui": {
     "page": "anOption.html",
     "chrome_style": true
   },
   "background": {
-    "scripts": ["anEventPage.js"],
-    "persistent": false
+    "service_worker": "anEventPage.js"
   },
-  "browser_action": {
+  "action": {
     "default_icon": {
       "19": "icons/logo.png",
       "38": "icons/logo64.png"
@@ -37,14 +35,19 @@
     "default_title": "Adieu Profanity Filter"
   },
   "web_accessible_resources": [
-	"img/null.png",
-	"icons/logo.png", 
-  "icons/logo64.png",
-  "icons/logo128.png"
+    {
+      "resources": [
+        "img/null.png",
+        "icons/logo.png",
+        "icons/logo64.png",
+        "icons/logo128.png"
+      ],
+      "matches": ["<all_urls>"]
+    }
   ],
   "content_scripts": [
     {
-      "matches":["<all_urls>"],
+      "matches": ["<all_urls>"],
       "js": ["aFilter.js"],
       "run_at": "document_end",
       "all_frames": true
