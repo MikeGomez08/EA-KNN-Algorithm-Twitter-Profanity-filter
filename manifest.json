@@ -21,8 +21,7 @@
     "<all_urls>"
   ],
   "options_ui": {
-    "page": "anOption.html",
-    "chrome_style": true
+    "page": "anOption.html"
   },
   "background": {
     "service_worker": "anEventPage.js"
